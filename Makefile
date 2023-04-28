@@ -2,7 +2,7 @@ install:
 	poetry install
 
 gendiff:
-	poetry run gendiff -h
+	poetry run gendiff
 
 package-install:
 	poetry -m pip install --user dist/*.whl
