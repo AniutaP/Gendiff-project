@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-import json
 import itertools
+from gendiff.read_files import read_file
 
 
 def generate_diff(file1, file2):
-    file1_data = json.load(open(file1))
-    file2_data = json.load(open(file2))
+    file1_data = read_file(file1)
+    file2_data = read_file(file2)
     data = []
     for key in file1_data:
         if key not in file2_data:
