@@ -15,3 +15,6 @@
 
 ### Gendiff work
 [![asciicast](https://asciinema.org/a/581219.svg)](https://asciinema.org/a/581219)
+
+
+[![asciicast](https://asciinema.org/a/582862.svg)](https://asciinema.org/a/582862)
