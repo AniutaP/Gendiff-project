@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-import itertools
 from gendiff.read_files import read_file
+from gendiff.formatter.stylish import stylish
 
 
 def generate_diff(file1, file2):
     file_data_1 = read_file(file1)
     file_data_2 = read_file(file2)
     data_diff = get_diff(file_data_1, file_data_2)
-    res = itertools.chain("{", data_diff, "}")
-    return data_diff
+    return stylish(data_diff)
 
 
 def get_diff(file1_data, file2_data):
@@ -17,17 +16,23 @@ def get_diff(file1_data, file2_data):
     data = []
 
     for key in sort_keys:
+        node = {'name': key}
         if key not in file2_data:
-            data.append(f' - {key}: {file1_data[key]}')
+            node['condition'] = 'deleted'
+            node['value'] = file1_data[key]
         elif key not in file1_data:
-            data.append(f' + {key}: {file2_data[key]}')
-        elif isinstance(file1_data[key], dict) and isinstance(file2_data[key], dict):
-            children = get_diff(file1_data[key], file2_data[key])
-            data.append(children)
+            node['condition'] = 'added'
+            node['value'] = file2_data[key]
+        elif isinstance(file1_data[key], dict) \
+                and isinstance(file2_data[key], dict):
+            node['condition'] = 'children_node'
+            node['children'] = get_diff(file1_data[key], file2_data[key])
         elif file1_data[key] != file2_data[key]:
-            data.append(f' - {key}: {file1_data[key]}')
-            data.append(f' + {key}: {file2_data[key]}')
+            node['condition'] = 'updated'
+            node['old_value'] = file1_data[key]
+            node['new_value'] = file2_data[key]
         else:
-            data.append(f'   {key}: {file1_data[key]}')
-
+            node['condition'] = 'unchanged'
+            node['value'] = file1_data[key]
+        data.append(node)
     return data
