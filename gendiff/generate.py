@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from gendiff.read_files import read_file
-from gendiff.formatter.stylish import stylish
 from gendiff.formatter.format import get_format
 
 
