@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 from gendiff.read_files import read_file
 from gendiff.formatter.stylish import stylish
+from gendiff.formatter.format import get_format
 
 
-def generate_diff(file1, file2):
+def generate_diff(file1, file2, formatter='stylish'):
     file_data_1 = read_file(file1)
     file_data_2 = read_file(file2)
     data_diff = get_diff(file_data_1, file_data_2)
-    return stylish(data_diff)
+    return get_format(data_diff, formatter)
 
 
 def get_diff(file1_data, file2_data):
