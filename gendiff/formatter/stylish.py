@@ -1,27 +1,31 @@
 #!/usr/bin/env python3
-def stylish(get_diff_list, level=0):
+def stylish(get_diff_list):
+    get_diff_list.sort(key=lambda x: x['name'])
+    result = make_stylish(get_diff_list)
+    return result
+
+
+def make_stylish(get_diff_list, level=0):
     result = '{\n'
     indent = '  '
 
     for i in range(level):
         indent += '    '
 
-    get_diff_list.sort(key=lambda x: x['name'])
-
     for node in get_diff_list:
         if node['condition'] == 'children_node':
-            data = stylish(node['children'], level + 1)
+            data = make_stylish(node['children'], level + 1)
             result += f"{indent}  {node['name']}: {data}\n"
-        elif node['condition'] == 'unchanged':
+        if node['condition'] == 'unchanged':
             data = stringify(node['value'], indent)
             result += f"{indent}  {node['name']}: {data}\n"
-        elif node['condition'] == 'added':
+        if node['condition'] == 'added':
             data = stringify(node['value'], indent)
             result += f"{indent}+ {node['name']}: {data}\n"
-        elif node['condition'] == 'deleted':
+        if node['condition'] == 'deleted':
             data = stringify(node['value'], indent)
             result += f"{indent}- {node['name']}: {data}\n"
-        else:
+        if node['condition'] == 'updated':
             data = stringify(node['old_value'], indent)
             result += f"{indent}- {node['name']}: {data}\n"
             data = stringify(node['new_value'], indent)

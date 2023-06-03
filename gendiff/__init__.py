@@ -11,6 +11,10 @@ __all__ = ('generate_diff',
            'make_parse_args',
            'read_file',
            'stylish',
+           'make_stylish',
            'stringify',
-           'get_format'
+           'get_format',
+           'plain',
+           'make_plain',
+           'to_string'
            )

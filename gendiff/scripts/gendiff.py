@@ -7,7 +7,8 @@ def main():
     args = make_parse_args()
     first_file = args.first_file
     second_file = args.second_file
-    result = generate_diff(first_file, second_file)
+    formatter = args.format
+    result = generate_diff(first_file, second_file, formatter)
     print(result)
 
 
