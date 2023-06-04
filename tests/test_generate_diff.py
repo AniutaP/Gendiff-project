@@ -18,5 +18,5 @@ def test_generate_diff_stylish_yml():
     assert generate_diff('tests/fixtures/file1.yml', 'tests/fixtures/file2.yml') == STYLISH_REFERENS_RESULT
 
 
-def test_generate_diff_plain_json():
+def test_generate_diff_plain():
     assert generate_diff('tests/fixtures/file1.yml', 'tests/fixtures/file2.yml', 'plain') == PLAIN_REFERENS_RESULT

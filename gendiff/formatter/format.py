@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from gendiff.formatter.stylish import stylish
 from gendiff.formatter.plain import plain
+from gendiff.formatter.json import json_format
 
 
 def get_format(data_diff, formatter):
@@ -8,3 +9,5 @@ def get_format(data_diff, formatter):
         return stylish(data_diff)
     if formatter == 'plain':
         return plain(data_diff)
+    if formatter == 'json':
+        return json_format(data_diff)
