@@ -5,7 +5,7 @@ def stylish(get_diff_list):
     return result
 
 
-def make_stylish(get_diff_list, level=0):
+def make_stylish(get_diff_list, level=0):  # noqa: C901
     result = '{\n'
     indent = '  '
 
