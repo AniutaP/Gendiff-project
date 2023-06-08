@@ -31,14 +31,16 @@ The program provides three types of output formats:
 
 
 ### Usage as library
-```from gendiff import generate_diff
+```
+from gendiff import generate_diff
 
 diff = generate_diff(first_file, second_file, formatter)
 ```
 
 
 ### Usage as utility
-```$ gendiff -h
+```
+$ gendiff -h
 usage: gendiff [-h] [-f FORMAT] first_file second_file
 
 Compares two configuration files and shows a difference.
