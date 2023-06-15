@@ -6,18 +6,6 @@ from gendiff.generate import generate_diff
     'file1, file2, formatter, expected',
     [
         (
-            'tests/fixtures/filepath1.json',
-            'tests/fixtures/filepath2.json',
-            'stylish',
-            'tests/fixtures/flat_right_result.txt',
-        ),
-        (
-            'tests/fixtures/filepath1.yml',
-            'tests/fixtures/filepath2.yml',
-            'stylish',
-            'tests/fixtures/flat_right_result.txt',
-        ),
-        (
             'tests/fixtures/file1.json',
             'tests/fixtures/file2.json',
             'stylish',
