@@ -11,3 +11,4 @@ def get_format(data_diff, formatter):
         return plain(data_diff)
     if formatter == 'json':
         return json_format(data_diff)
+    raise ValueError('Unknown format name')
