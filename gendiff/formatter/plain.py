@@ -22,8 +22,7 @@ def make_plain(get_diff_list, path=''):
             result.append(difference)
         if node['condition'] == 'deleted':
             path_to_change = path + node['name']
-            change_before = to_string(node['value'])
-            difference = "Property '{}' was removed".format(path_to_change)
+            difference = f"Property '{path_to_change}' was removed"
             result.append(difference)
         if node['condition'] == 'updated':
             path_to_change = path + node['name']
