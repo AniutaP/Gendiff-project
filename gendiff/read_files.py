@@ -13,10 +13,10 @@ def read_file(some_file):
         raise ValueError('Unknown format file')
 
     file_data = open(some_file)
-    return find_file_type(file_name, file_data)
+    return load_file_type(file_name, file_data)
 
 
-def find_file_type(file_name, file_data):
+def load_file_type(file_name, file_data):
     if file_name == yaml:
         return yaml.load(file_data, Loader=SafeLoader)
     if file_name == json:
