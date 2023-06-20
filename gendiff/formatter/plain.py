@@ -43,8 +43,6 @@ def to_string(data):
         result = str(data).lower()
     elif data is None:
         result = 'null'
-    elif type(data) is str:
-        result = "'{}'".format(data)
     else:
-        result = '{}'.format(data)
+        result = "'{}'".format(data)
     return result
