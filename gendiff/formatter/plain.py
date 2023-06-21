@@ -17,28 +17,28 @@ def make_plain(get_diff_list, path=''):
     result = []
     for node in get_diff_list:
         if node['condition'] == 'children_node':
-            path_to_change = path + node['name'] + '.'
-            difference = make_plain(node['children'], path_to_change)
+            path_to_difference = path + node['name'] + '.'
+            difference = make_plain(node['children'], path_to_difference)
             result.extend(difference)
         if node['condition'] == 'added':
-            path_to_change = path + node['name']
-            change = make_string(node['value'])
+            path_to_difference = path + node['name']
+            value = make_string(node['value'])
             difference = (
-                f"Property '{path_to_change}' was added "
-                f"with value: {change}"
+                f"Property '{path_to_difference}' was added "
+                f"with value: {value}"
             )
             result.append(difference)
         if node['condition'] == 'deleted':
-            path_to_change = path + node['name']
-            difference = f"Property '{path_to_change}' was removed"
+            path_to_difference = path + node['name']
+            difference = f"Property '{path_to_difference}' was removed"
             result.append(difference)
         if node['condition'] == 'updated':
-            path_to_change = path + node['name']
-            change_before = make_string(node['old_value'])
-            change_after = make_string(node['new_value'])
+            path_to_difference = path + node['name']
+            old_value = make_string(node['old_value'])
+            new_value = make_string(node['new_value'])
             difference = (
-                f"Property '{path_to_change}' was updated. "
-                f'From {change_before} to {change_after}'
+                f"Property '{path_to_difference}' was updated. "
+                f'From {old_value} to {new_value}'
             )
             result.append(difference)
     return result
