@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-from gendiff.generate import generate_diff, get_diff
+from gendiff.generate import generate_diff
+from gendiff.difference import get_diff
 from gendiff.parse_args import make_parse_args
 from gendiff.read_files import read_file, load_file_type
 from gendiff.formatter.stylish import (
