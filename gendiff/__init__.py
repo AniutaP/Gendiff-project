@@ -2,7 +2,7 @@
 from gendiff.generate import generate_diff
 from gendiff.difference import get_diff
 from gendiff.parse_args import make_parse_args
-from gendiff.read_files import read_file, load_file_type
+from gendiff.read_incoming_data import read_data, parse_format, get_extension
 from gendiff.formatter.stylish import (
     stylish, make_stylish, stringify, make_indent
 )
@@ -14,15 +14,16 @@ from gendiff.formatter.json import json_format
 __all__ = ('generate_diff',
            'get_diff',
            'make_parse_args',
-           'read_file',
+           'read_data',
+           'get_extension',
+           'parse_format',
            'stylish',
            'make_stylish',
            'stringify',
+           'make_indent',
            'get_format',
            'plain',
            'make_plain',
            'make_string',
            'json_format',
-           'load_file_type',
-           'make_indent',
            )
