@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 def get_diff(entry_data1, entry_data2):
     sort_keys = sorted(entry_data1.keys() | entry_data2.keys())
-    data = []
+    diff = []
 
     for key in sort_keys:
         node = {'name': key}
@@ -22,5 +22,5 @@ def get_diff(entry_data1, entry_data2):
         else:
             node['condition'] = 'unchanged'
             node['value'] = entry_data1[key]
-        data.append(node)
-    return data
+        diff.append(node)
+    return diff
