@@ -1,7 +1,7 @@
 # GENDIFF PROJECT 
 
 
-[![Actions Status](https://github.com/AniutaP/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/AniutaP/python-project-50/actions)  [![Maintainability](https://api.codeclimate.com/v1/badges/508a955af9963b6243e5/maintainability)](https://codeclimate.com/github/AniutaP/python-project-50/maintainability)  [![Test Coverage](https://api.codeclimate.com/v1/badges/508a955af9963b6243e5/test_coverage)](https://codeclimate.com/github/AniutaP/python-project-50/test_coverage)
+[![Actions Status](https://github.com/AniutaP/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/AniutaP/python-project-50/actions)  [![Maintainability](https://api.codeclimate.com/v1/badges/f8ebfd49c1a7ee4eeaf7/maintainability)](https://codeclimate.com/github/AniutaP/Gendiff-project/maintainability)  [![Test Coverage](https://api.codeclimate.com/v1/badges/f8ebfd49c1a7ee4eeaf7/test_coverage)](https://codeclimate.com/github/AniutaP/Gendiff-project/test_coverage)
 
 
 ### Description
