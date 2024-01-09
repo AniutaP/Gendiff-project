@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 def make_string(data):
-    if type(data) is dict or type(data) is list:
-        result = '[complex value]'
-    elif type(data) is bool:
-        result = str(data).lower()
+    data_type = {dict: '[complex value]',
+                 list: '[complex value]',
+                 bool: str(data).lower(),
+                 str: "'{}'".format(data),
+                 }
+    if type(data) in data_type:
+        result = data_type[type(data)]
     elif data is None:
         result = 'null'
-    elif type(data) is str:
-        result = "'{}'".format(data)
     else:
         result = data
     return result
