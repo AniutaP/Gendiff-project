@@ -2,14 +2,14 @@
 import json
 import yaml
 from yaml.loader import SafeLoader
+import pathlib
 
 
 def get_extension(path_to_data):
-    if path_to_data[-4:] == ".yml" or path_to_data[-5:] == ".yaml":
-        data_format = yaml
-    elif path_to_data[-5:] == ".json":
-        data_format = json
-    else:
+    formats = {'.yml': yaml, '.yaml': yaml, '.json': json}
+    format = pathlib.PurePath(path_to_data).suffix
+    data_format = formats[format]
+    if not data_format:
         raise ValueError('Unknown format file')
     return data_format
 
