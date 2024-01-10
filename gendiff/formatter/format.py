@@ -5,10 +5,10 @@ from gendiff.formatter.json import json_format
 
 
 def get_format(data_diff, formatter):
-    if formatter == 'stylish':
-        return stylish(data_diff)
-    if formatter == 'plain':
-        return plain(data_diff)
-    if formatter == 'json':
-        return json_format(data_diff)
+    available_formats = {'stylish': stylish(data_diff),
+                         'plain': plain(data_diff),
+                         'json': json_format(data_diff)
+                         }
+    if formatter in available_formats:
+        return available_formats[formatter]
     raise ValueError('Unknown format name')
