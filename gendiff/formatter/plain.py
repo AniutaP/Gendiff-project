@@ -27,11 +27,9 @@ def get_plain(get_diff_list, path=''):
             )
             result.append(difference)
         if node['condition'] == 'deleted':
-            path_to = path + node['name']
             difference = f"Property '{path_to}' was removed"
             result.append(difference)
         if node['condition'] == 'updated':
-            path_to = path + node['name']
             old_value = make_string(node['old_value'])
             new_value = make_string(node['new_value'])
             difference = (
