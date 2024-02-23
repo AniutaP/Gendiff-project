@@ -9,11 +9,12 @@ def make_indent(level):
 def stringify(data, indent):
     if isinstance(data, dict):
         indent += '    '
-        result = '{\n'
-        for key in data.keys():
+        res = ['{']
+        for key in data:
             value = stringify(data[key], indent)
-            result += f'{indent}  {key}: {value}\n'
-        result += indent[:-2] + '}'
+            res.append(f'{indent}  {key}: {value}')
+        res.append(indent[:-2] + '}')
+        result = '\n'.join(res)
     elif data is None:
         result = 'null'
     elif type(data) is bool:
@@ -24,30 +25,30 @@ def stringify(data, indent):
 
 
 def make_stylish(get_diff_list, level=0):  # noqa: C901
-    result = '{\n'
+    result = ['{']
     indent = make_indent(level)
 
     for node in get_diff_list:
         if node['condition'] == 'children_node':
             data = make_stylish(node['children'], level + 1)
-            result += f"{indent}  {node['name']}: {data}\n"
+            result.append(f"{indent}  {node['name']}: {data}")
         if node['condition'] == 'unchanged':
             data = stringify(node['value'], indent)
-            result += f"{indent}  {node['name']}: {data}\n"
+            result.append(f"{indent}  {node['name']}: {data}")
         if node['condition'] == 'added':
             data = stringify(node['value'], indent)
-            result += f"{indent}+ {node['name']}: {data}\n"
+            result.append(f"{indent}+ {node['name']}: {data}")
         if node['condition'] == 'deleted':
             data = stringify(node['value'], indent)
-            result += f"{indent}- {node['name']}: {data}\n"
+            result.append(f"{indent}- {node['name']}: {data}")
         if node['condition'] == 'updated':
             data = stringify(node['old_value'], indent)
-            result += f"{indent}- {node['name']}: {data}\n"
+            result.append(f"{indent}- {node['name']}: {data}")
             data = stringify(node['new_value'], indent)
-            result += f"{indent}+ {node['name']}: {data}\n"
-    result += indent[:-2] + '}'
-
-    return result
+            result.append(f"{indent}+ {node['name']}: {data}")
+    result.append(indent[:-2] + '}')
+    diff_list = '\n'.join(result)
+    return diff_list
 
 
 def stylish(get_diff_list):

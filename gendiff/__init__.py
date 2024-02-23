@@ -7,7 +7,7 @@ from gendiff.formatter.stylish import (
     stylish, make_stylish, stringify, make_indent
 )
 from gendiff.formatter.format import get_format
-from gendiff.formatter.plain import plain, make_plain, make_string
+from gendiff.formatter.plain import plain, get_plain, make_string
 from gendiff.formatter.json import json_format
 
 
@@ -23,7 +23,7 @@ __all__ = ('generate_diff',
            'make_indent',
            'get_format',
            'plain',
-           'make_plain',
+           'get_plain',
            'make_string',
            'json_format',
            )
